@@ -124,17 +124,16 @@ def waitlist_generator():
 if __name__ == "__main__":
     waitlist_generator()
 
+"""Design Memo: 
+The list that I created, has nodes that connect with each other. Each node has one customer name and then a pointer for the 
+next one. The Linkedlist is used to keep track of the head of the list, similar to the head of a train and carts following.
+When someone is added is to the front then, new node and this new node points to the old head. When I add a name to the end 
+of the list, we go through the list until the last one and attach it at the end. To remove someone we search the name and 
+skip the node. To print it... We go through the links to the end..."""
 
-"""
-Design Memo (≈230 words)
+"""The head is the most important part because it's where the list starts from. If there is no head there is no list. 
+Each new customer becomes the new head. If there are two persons in the list and I remove the first one, the head will become 
+the second person because our nodes point for the next one."""
 
-How does your list work?
-This tool uses a custom singly linked list to store a sequence of customer names. Each Node holds a customer name and a reference (next) to the following Node. The LinkedList tracks only the head (the first Node). Inserting at the front is O(1) because we make a new Node whose next points to the current head, then update head. Appending to the end is O(n): we traverse until the last node and link the new node there. Removal walks the list to find the target name and relinks the previous node’s next pointer to skip over the removed node. Printing walks from head to tail and prints each name.
-
-What role does the head play?
-The head is the entry point (root) of the entire list. If head is None, the waitlist is empty. All operations start from head: adding to the front replaces head, removing the first element updates head, and traversals begin at head to find the tail or a specific name. Keeping head accurate ensures the whole structure remains reachable and consistent.
-
-When might a real engineer need a custom list like this?
-Custom lists are useful when you need precise control over memory layout, node content, or insertion/removal costs, and when built-in containers don’t match operational or compliance constraints. Examples include: implementing queues with strict O(1) front insertions; building low-overhead, append-friendly logs; writing embedded systems or high-throughput services with pooled nodes; or crafting specialized structures for schedulers, caches, or networking stacks where pointer-level control, deterministic behavior, or interoperability with C extensions is important.
-"""
-
+'''A real engineer will need a custom list when they need maybe more control of the data.
+When they need a certain special order that they need to keep. '''
